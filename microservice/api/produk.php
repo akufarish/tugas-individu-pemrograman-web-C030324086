@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $produkDetail = ProdukOrm::find_one($id);
 
         if ($produkDetail) {
-            echo json_encode($produkDetail->as_array());
+            echo json_encode([
+                "data" => $produkDetail->as_array()
+            ]);
         } else {
             http_response_code(404);
             echo json_encode(["error" => "Data tidak ditemukan"]);
@@ -20,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($produkList as $produk) {
             $data[] = $produk->as_array();
         }
-        echo json_encode($data);
+        echo json_encode([
+            "data" => $data
+        ]);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $produk = ProdukOrm::create();

@@ -11,7 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $transaksiDetail = TransaksiOrm::find_one($id);
 
         if ($transaksiDetail) {
-            echo json_encode($transaksiDetail->as_array());
+            echo json_encode([
+                "data" => $transaksiDetail->as_array()
+            ]);
         } else {
             http_response_code(404);
             echo json_encode(["error" => "Data tidak ditemukan"]);
@@ -23,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($transaksiList as $transaksi) {
             $data[] = $transaksi->as_array();
         }
-        echo json_encode($data);
+        echo json_encode([
+            "data" => $data
+        ]);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transaksi = TransaksiOrm::create();

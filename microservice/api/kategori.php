@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $kategoriDetail = KategoriOrm::find_one($id);
 
         if ($kategoriDetail) {
-            echo json_encode($kategoriDetail->as_array());
+            echo json_encode([
+                "data" => $kategoriDetail->as_array()
+            ]);
         } else {
             http_response_code(404);
             echo json_encode(["error" => "Data tidak ditemukan"]);
@@ -20,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($kategoriList as $kategori) {
             $data[] = $kategori->as_array();
         }
-        echo json_encode($data);
+        echo json_encode([
+            "data" => $data
+        ]);
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kategori = KategoriOrm::create();
