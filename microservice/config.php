@@ -1,6 +1,5 @@
 <?php
-require_once ('C:/kuliah/web/tugas-individu/vendor/autoload.php');
-// /c/kuliah/web/tugas-individu
+require_once ('../vendor/autoload.php');
 
 $dotenv = Dotenv\Dotenv::createImmutable("../../");
 $dotenv->load();
