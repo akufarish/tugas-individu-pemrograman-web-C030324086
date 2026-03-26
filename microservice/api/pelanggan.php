@@ -32,20 +32,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $post = (object) $_POST;
 
     if (isset($post->nama_pelanggan)) {
-        $pelanggan->nama_pelanggan = $post->nama_pelanggan;
+        if (!empty($post->nama_pelanggan)) {
+            $pelanggan->nama_pelanggan = $post->nama_pelanggan;
     
-        $pelanggan->save();
-        
-        http_response_code(201);
-        echo json_encode([
-            "message" => "Data create successfully",
-            "data" => $pelanggan->as_array()
-        ]);
+            $pelanggan->save();
+            
+            http_response_code(201);
+            echo json_encode([
+                "message" => "Data create successfully",
+                "data" => $pelanggan->as_array()
+            ]);
+        } else {
+            http_response_code(400);
+            echo json_encode([
+                "error" => "Form nama pelanggan tidak boleh kosong",
+            ]);
+            return;
+        }
     } else {
         http_response_code(400);
         echo json_encode([
             "error" => "Form nama pelanggan tidak boleh kosong",
         ]);
+        return;
     }
 } else if ($_SERVER["REQUEST_METHOD"] == "PUT") {
     if (isset($_GET["id"])) {
