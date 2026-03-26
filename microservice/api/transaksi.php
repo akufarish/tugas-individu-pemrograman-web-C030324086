@@ -3,6 +3,7 @@ header('Content-Type: application/json');
 require_once "../model/TransaksiOrm.php";
 require_once "../model/ProdukOrm.php";
 require_once "../model/PelangganOrm.php";
+require_once "../model/DetailTransaksiOrm.php";
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -34,22 +35,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $post = (object) $_POST;
 
-    if (isset($post->id_pelanggan) && isset($post->id_produk)) {
+    $json = file_get_contents('php://input');
 
-        $pelanggan = PelangganOrm::where("id_pelanggan", $post->id_pelanggan)->find_one();
-        $produk = ProdukOrm::where("id_produk", $post->id_produk)->find_one();
+    $data = json_decode($json, true);
+    $data = (object) $data;
 
-        if (empty($pelanggan) || empty($produk)) {
+    // var_dump($data->id_pelanggan);
+
+    if (isset($data->id_pelanggan)) {
+
+        $pelanggan = PelangganOrm::where("id_pelanggan", $data->id_pelanggan)->find_one();
+
+        if (empty($pelanggan)) {
             http_response_code(404);
             echo json_encode([
-                "error" => "Data pelanggan atau produk tidak ditemukan",
+                "error" => "Data pelanggan tidak ditemukan",
             ]);
             return;
         } else {
-            $transaksi->id_pelanggan = $post->id_pelanggan;
-            $transaksi->id_produk = $post->id_produk;
+            $transaksi->id_pelanggan = $data->id_pelanggan;
         
             $transaksi->save();
+
+            $transaksi = (object) $transaksi;
+
+            foreach ($data->produk as $produk) {
+                $detailTransaksi = DetailTransaksiOrm::create();
+                $produk = (object) $produk;
+                $detailTransaksi->id_produk = $produk->id_produk;
+                $detailTransaksi->id_transaksi = $transaksi->id_transaksi;
+                $detailTransaksi->pcs = $produk->pcs;
+                $detailTransaksi->save();
+            }
             
             http_response_code(201);
             echo json_encode([
