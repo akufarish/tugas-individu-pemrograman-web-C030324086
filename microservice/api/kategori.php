@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $post = (object) $_POST;
 
-    if (isset($post->nama_kategori)) {
+    if (isset($post->nama_kategori) && !empty($post->nama_kategori)) {
         $kategori->nama_kategori = $post->nama_kategori;
     
         $kategori->save();
