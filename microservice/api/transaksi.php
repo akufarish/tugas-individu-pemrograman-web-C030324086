@@ -10,10 +10,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
         $transaksiDetail = TransaksiOrm::find_one($id);
+        $dataDetail = $transaksiDetail->detail_transaksi()->find_many();
+
+        $transaksiDetail = (array) $transaksiDetail->as_array();
+
+        $detailArr = [];
+        foreach ($dataDetail as $detail) {
+            $produk = $detail->produk()->find_one();
+            $detail = $detail->as_array();
+            $detail["produk"] = $produk->as_array();
+            $detailArr[] = $detail;
+        }
+            
+        $transaksiDetail["detail"] = $detailArr;
 
         if ($transaksiDetail) {
             echo json_encode([
-                "data" => $transaksiDetail->as_array()
+                "data" => $transaksiDetail,
             ]);
         } else {
             http_response_code(404);
@@ -21,11 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
     } else {
         $transaksiList = TransaksiOrm::find_many();
-
         $data = [];
+
         foreach ($transaksiList as $transaksi) {
-            $data[] = $transaksi->as_array();
+            $detailTransaksi = $transaksi->detail_transaksi()->find_many();
+
+            $detailArr = [];
+            foreach ($detailTransaksi as $detail) {
+                $produk = $detail->produk()->find_one();
+                $detail = $detail->as_array();
+                $detail["produk"] = $produk->as_array();
+                $detailArr[] = $detail;
+            }
+
+            $transaksiItem = $transaksi->as_array();
+            
+            $transaksiItem["detail"] = $detailArr;
+            $data[] = $transaksiItem;
         }
+
         echo json_encode([
             "data" => $data
         ]);
@@ -47,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $pelanggan = PelangganOrm::where("id_pelanggan", $data->id_pelanggan)->find_one();
 
         if (empty($pelanggan)) {
-            http_response_code(404);
+            http_response_code(400);
             echo json_encode([
                 "error" => "Data pelanggan tidak ditemukan",
             ]);
@@ -91,17 +118,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
             $put = (object) json_decode($putdata, true);
             $pelanggan = PelangganOrm::where("id_pelanggan", $put->id_pelanggan)->find_one();
-            $produk = ProdukOrm::where("id_produk", $put->id_produk)->find_one();
 
-            if (empty($pelanggan) || empty($produk)) {
+            if (empty($pelanggan)) {
                 http_response_code(404);
                 echo json_encode([
                     "error" => "Data pelanggan atau produk tidak ditemukan",
                 ]);
                 return;
-            } else {
-                $transaksiDetail->id_pelanggan = $put->id_pelanggan;
-                $transaksiDetail->id_produk = $put->id_produk;        
+            } else { 
                 $transaksiDetail->status = $put->status;
     
                 $transaksiDetail->save();
@@ -124,10 +148,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 } else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
     if (isset($_GET["id"])) {
         $id = $_GET['id'];
-        $transaksiDetail = TransaksiOrm::find_one($id);
+        $transaksi = TransaksiOrm::find_one($id);
 
-        if ($transaksiDetail) {
-            $transaksiDetail->delete();
+        if ($transaksi) {
+            $transaksiDetail = $transaksi->detail_transaksi()->find_many();
+
+            foreach ($transaksiDetail as $detail) {
+                $detail->delete();
+            }
+
+            $transaksi->delete();
+
             http_response_code(200);
             echo json_encode([
                 "message" => "Data Deleted successfully",

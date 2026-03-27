@@ -8,7 +8,7 @@ Headers :
 
 ```json
 {
-  "Accept": "application/json"
+  "Content-Type": "application/json"
 }
 ```
 
@@ -48,7 +48,7 @@ Headers :
 
 ```json
 {
-  "Accept": "application/json"
+  "Content-Type": "application/json"
 }
 ```
 
@@ -96,7 +96,7 @@ Headers :
 
 ```json
 {
-  "Accept": "application/json"
+  "Content-Type": "application/json"
 }
 ```
 
@@ -137,7 +137,7 @@ Headers :
 
 ```json
 {
-  "Accept": "application/json"
+  "Content-Type": "application/json"
 }
 ```
 
@@ -176,7 +176,7 @@ Headers :
 
 ```json
 {
-  "Accept": "application/json"
+  "Content-Type": "application/json"
 }
 ```
 

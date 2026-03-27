@@ -5,4 +5,8 @@ class TransaksiOrm extends Model
 {
     public static $_table = 'transaksi';
     public static $_id_column = 'id_transaksi';
+
+    function detail_transaksi() {
+        return $this->has_many("DetailTransaksiOrm", "id_transaksi");
+    }
 }
