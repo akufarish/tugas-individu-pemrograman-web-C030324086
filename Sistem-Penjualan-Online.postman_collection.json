@@ -1,0 +1,805 @@
+{
+  "info": {
+    "_postman_id": "e48ec21e-2326-483f-bf0d-c490bfb5bb33",
+    "name": "Sistem Penjualan Online",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "46094713",
+    "_collection_link": "https://go.postman.co/collection/46094713-e48ec21e-2326-483f-bf0d-c490bfb5bb33?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Produk",
+      "item": [
+        {
+          "name": "Create Produk",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "id_kategori",
+                  "value": "1",
+                  "type": "text",
+                  "uuid": "e555a9e9-7dcc-45b6-b7df-60109e64faff"
+                },
+                {
+                  "key": "nama_produk",
+                  "value": "yoyo",
+                  "type": "text",
+                  "uuid": "45109411-98dc-45d9-8408-63636f8e5dac"
+                },
+                {
+                  "key": "deskripsi",
+                  "value": "mainan yoyo",
+                  "type": "text",
+                  "uuid": "bb2f35c4-d230-45d9-aa05-3ed75d534df7"
+                },
+                {
+                  "key": "stok",
+                  "value": "5",
+                  "type": "text",
+                  "uuid": "86ed2d3f-2107-44ec-8952-15c4f11608c9"
+                },
+                {
+                  "key": "harga",
+                  "value": "20000",
+                  "type": "text",
+                  "uuid": "45cdea26-6ccc-4a73-8e34-2a4291f392b6"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/Produk.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "Produk.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List Produk",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/produk.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "produk.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Produk",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/produk.php?id=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "produk.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Produk",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/produk.php?id=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "produk.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Produk",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama_produk\": \"PS4\",\r\n    \"deskripsi\": \"PS4 Pro\",\r\n    \"harga\": 400000,\r\n    \"stok\": 12,\r\n    \"id_kategori\": 5\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/produk.php?id=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "produk.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Kategori",
+      "item": [
+        {
+          "name": "Create Kategori",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "nama_kategori",
+                  "value": "Game",
+                  "type": "text",
+                  "uuid": "e555a9e9-7dcc-45b6-b7df-60109e64faff"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/kategori.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "kategori.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List Kategori",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/kategori.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "kategori.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Kategori",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/kategori.php?id=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "kategori.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Kategori",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/kategori.php?id=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "kategori.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Kategori",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama_kategori\": \"Kartu\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/kategori.php?id=3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "kategori.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "3"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pelanggan",
+      "item": [
+        {
+          "name": "Create Pelanggan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "nama_pelanggan",
+                  "value": "Esther",
+                  "type": "text",
+                  "uuid": "2d0f0a23-5991-48a7-a091-ddbc3300d2b6"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/pelanggan.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "pelanggan.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get List Pelanggan",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/pelanggan.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "pelanggan.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Pelanggan",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/pelanggan.php?id=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "pelanggan.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Pelanggan",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/pelanggan.php?id=17",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "pelanggan.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "17"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Pelanggan",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama_pelanggan\": \"March\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/pelanggan.php?id=20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "pelanggan.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transaksi",
+      "item": [
+        {
+          "name": "Get List Transaksi",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/transaksi.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "transaksi.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Transaksi",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/transaksi.php?id=18",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "transaksi.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "18"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Transaksi",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id_pelanggan\": 1,\r\n    \"produk\": [\r\n        {\r\n            \"id_produk\": 1,\r\n            \"pcs\": 2\r\n        },\r\n        {\r\n            \"id_produk\": 3,\r\n            \"pcs\": 1\r\n        }\r\n    ]   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/transaksi.php",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "transaksi.php"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Transaksi",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/transaksi.php?id=19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "transaksi.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "19"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Transaksi",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"id_pelanggan\": 1,\r\n    \"status\": \"Sukses\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/transaksi.php?id=19",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "transaksi.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "19"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Detail Transaksi",
+      "item": [
+        {
+          "name": "Update pcs transaksi",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"pcs\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/detailTransaksi.php?id=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "detailTransaksi.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete pcs transaksi",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"pcs\": 3\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:1234/microservice/api/detailTransaksi.php?id=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "1234",
+              "path": [
+                "microservice",
+                "api",
+                "detailTransaksi.php"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -72,15 +72,11 @@ Request Body:
 
 ```json
 {
-  "message": "Data Updated successfully",
-  "data": {
-    "id_produk": 5,
-    "id_kategori": 5,
-    "nama_produk": "PS4",
-    "deskripsi": "PS4 Pro",
-    "stok": 12,
-    "harga": 400000
-  }
+  "nama_produk": "PS4",
+  "deskripsi": "PS4 Pro",
+  "harga": 400000,
+  "stok": 12,
+  "id_kategori": 5
 }
 ```
 
